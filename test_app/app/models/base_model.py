@@ -3,6 +3,7 @@
 from datetime import datetime
 
 from app import db
+from app.exceptions import InternalServerError
 
 
 class BaseModel(db.Model):
@@ -12,8 +13,13 @@ class BaseModel(db.Model):
     update_date = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            db.session.rollback()
+            raise InternalServerError(e)
 
     def save(self):
         try:
@@ -25,5 +31,5 @@ class BaseModel(db.Model):
         except Exception as e:
             print(e)
             db.session.rollback()
-            raise NotImplementedError
+            raise InternalServerError(e)
 
