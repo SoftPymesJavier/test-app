@@ -4,7 +4,8 @@ from flask import Blueprint
 
 api = Blueprint('api', __name__)
 
-from .example import example_endpoint
+from. import errors
+from.example import example_endpoint
 
 
 @api.before_request
@@ -19,3 +20,4 @@ def after_request(response):
                          'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     return response
+
