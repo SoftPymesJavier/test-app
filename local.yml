@@ -1,0 +1,29 @@
+version: '3'
+
+volumes:
+  local_mysql_data: {}
+
+services:
+  flask: &flask
+    build:
+      context: .
+      dockerfile: ./compose/dev/Dockerfile
+    image: example-api
+    depends_on:
+      - mysql
+    env_file:
+      - ./.environments/.api
+      - ./.environments/.mysql
+    ports:
+      - 5000:5000
+    volumes:
+      - ./test_app:/app
+    
+  mysql:
+    image: mysql/mysql-server:5.7.25
+    env_file:
+      - ./.environments/.mysql
+    volumes:
+      - local_mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306

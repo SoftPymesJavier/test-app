@@ -1,0 +1,8 @@
+#! /usr/bin/env sh
+
+set -o errexit
+set -o nounset
+
+export LC_ALL=C.UTF-8; export LANG=C.UTF-8; export FLASK_APP=run.py
+flask db upgrade
+python run.py
