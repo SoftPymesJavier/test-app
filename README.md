@@ -24,10 +24,20 @@
    ```
 
 3. Ejecutar
+
    ```
        - eval "$(docker-machine env testapp)"
        - make run-local
    ```
+   
+4. Ejemplo petición existente:
+
+   ```
+       - Para visualizar el HOST del Docker Machine ejecutar:
+           - docker-machine ls 
+           - Columna URL
+       - GET -> http://HOTS_DOCKER_MACHINE:5000/api/v1/example
+   ```    
 
 ### Prueba:
 
