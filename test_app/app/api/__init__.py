@@ -6,7 +6,11 @@ api = Blueprint('api', __name__)
 
 from. import errors
 from.example import example_endpoint
-
+from.prueba import insertar_endpoint
+from.prueba import eliminar_endpoint
+from.prueba import actualizar_endpoint
+from.prueba import consultar_endpoint
+from.prueba import filtrar_endpoint
 
 @api.before_request
 def before_request():

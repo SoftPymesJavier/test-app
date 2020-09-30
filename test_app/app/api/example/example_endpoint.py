@@ -9,3 +9,4 @@ from app.controllers import ExampleController
 def example():
     message = ExampleController.get_example()
     return jsonify(data=message)
+
