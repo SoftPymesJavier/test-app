@@ -7,7 +7,6 @@ from app.controllers import CrudController
 
 @api.route('/eliminar', methods=['GET'])
 def eliminar():
-    id=request.args.get('id')
-    message = 'dato a eliminar con id: ' + id
-    #datos= CrudController.eliminar_example(id)
+    Exampleid=request.args.get('id')
+    message= CrudController.eliminar_example(Exampleid)
     return jsonify(data=message)

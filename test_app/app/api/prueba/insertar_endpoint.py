@@ -9,5 +9,5 @@ from app.controllers import CrudController
 def insertar():
     title=request.args.get('title')
     description=request.args.get('description')
-    message = 'dato a insertar ' + title + description
+    message = CrudController.insertar_example(title,description)
     return jsonify(data=message)
